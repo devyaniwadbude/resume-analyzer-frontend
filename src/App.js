@@ -37,16 +37,21 @@ function App() {
           return;
       }
       setError("");
-      const response = await fetch("https://resume-analyzer-backend-2-xc71.onrender.com/match", {
-        method: "POST",
-        headers: {
-          "Content-Type": "text/plain",
-        },
-        body: jobDesc,
-      });
+      try {
+          const response = await fetch("https://resume-analyzer-backend-2-xc71.onrender.com/match", {
+            method: "POST",
+            headers: {
+              "Content-Type": "text/plain",
+            },
+            body: jobDesc,
+          });
 
-      const data = await response.json();
-      setResult(data);
+          const data = await response.json();
+          setResult(data);
+        } catch (err) {
+          console.error(err);
+          setError("❌ Something went wrong");
+        }
     };
 
   return (
