@@ -6,6 +6,7 @@ function App() {
   const [jobDesc, setJobDesc] = useState("");
   const [result, setResult] = useState(null);
   const [uploadMessage, setUploadMessage] = useState("");
+  const [error, setError] = useState("");
 
   const handleFileChange = (e) => {
     setFile(e.target.files[0]);
@@ -31,7 +32,11 @@ function App() {
     }, 3000);
   };
   const handleMatch = async () => {
-
+      if (!jobDesc.trim()) {
+          setError("❌ Please enter job description");
+          return;
+      }
+      setError("");
       const response = await fetch("https://resume-analyzer-backend-2-xc71.onrender.com/match", {
         method: "POST",
         headers: {
@@ -131,7 +136,11 @@ function App() {
           <textarea
             rows="4"
             placeholder="e.g. Backend Developer or Java, Spring Boot..."
-            onChange={(e) => setJobDesc(e.target.value)}
+            value={jobDesc}
+            onChange={(e) => {
+                setJobDesc(e.target.value);
+                setError(""); // typing start → error remove
+              }}
             style={{
               width: "100%",
               padding: "10px",
@@ -140,7 +149,11 @@ function App() {
               border: "1px solid #ccc"
             }}
           />
-
+          {error && (
+            <p style={{ color: "red", fontWeight: "bold" }}>
+              {error}
+            </p>
+          )}
           <br /><br />
 
           <button
