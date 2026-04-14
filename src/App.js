@@ -21,7 +21,7 @@ function App() {
     formData.append("file", file);
 
 
-    await fetch("http://localhost:8080/upload", {
+    await fetch("https://resume-analyzer-backend-2-xc71.onrender.com/upload", {
       method: "POST",
       body: formData,
     });
@@ -32,7 +32,7 @@ function App() {
   };
   const handleMatch = async () => {
 
-      const response = await fetch("http://localhost:8080/match", {
+      const response = await fetch("https://resume-analyzer-backend-2-xc71.onrender.com/match", {
         method: "POST",
         headers: {
           "Content-Type": "text/plain",
