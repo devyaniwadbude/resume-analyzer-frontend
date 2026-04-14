@@ -32,7 +32,7 @@ function App() {
     }, 3000);
   };
   const handleMatch = async () => {
-      if (!jobDesc.trim()) {
+      if (!jobDesc || !jobDesc.trim()) {
           setError("❌ Please enter job description");
           return;
       }
