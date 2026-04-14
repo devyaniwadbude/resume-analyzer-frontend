@@ -29,7 +29,7 @@ It allows users to upload their resume and analyze how well it matches a job des
 
 ## 🌐 Live Demo
 
-👉 https://your-frontend-url.vercel.app
+👉 https://resume-analyzer-frontend-olive.vercel.app
 
 ---
 
